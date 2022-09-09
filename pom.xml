@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.small</groupId>
+    <artifactId>easy-txt</artifactId>
+    <version>1.0.0</version>
+    <name>easy-txt</name>
+    <url>http://docs.zhangxiaocai</url>
+    <description>Easy txt for options </description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok.version>1.18.24</lombok.version>
+        <easytxt.version>1.0.0</easytxt.version>
+        <hutool-core.version>5.3.8</hutool-core.version>
+        <commons-io.version>2.11.0</commons-io.version>
+    </properties>
+    <dependencies>
+
+
+    </dependencies>
+
+    <modules>
+        <module>easy-txt-core</module>
+        <module>easy-txt-test</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

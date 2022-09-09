@@ -5,7 +5,7 @@
 
     <groupId>com.small</groupId>
     <artifactId>easy-txt</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>easy-txt</name>
     <url>http://docs.zhangxiaocai</url>
     <description>Easy txt for options </description>
@@ -14,12 +14,31 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.24</lombok.version>
-        <easytxt.version>1.0.0</easytxt.version>
+        <easytxt.version>1.1.0</easytxt.version>
         <hutool-core.version>5.3.8</hutool-core.version>
         <commons-io.version>2.11.0</commons-io.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+  <!--      <dependency>
+            <groupId>com.small</groupId>
+            <artifactId>easy-txt-core</artifactId>
+            <version>${easytxt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.small</groupId>
+            <artifactId>easy-txt-test</artifactId>
+            <version>${easytxt.version}</version>
+        </dependency>-->
 
     </dependencies>
 
@@ -49,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.6.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

@@ -3,19 +3,14 @@ package com.small.easytxt.annotation;
 
 import java.lang.annotation.*;
 
-/**
- * @author small
- */
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-public @interface TxtFiled {
+public @interface TxtPorperty {
 
     /**
-     * 行转bean列索引
+     * 强制固定索引列
      * @return
      */
-    int index() default -1;
-
-
+    boolean fixIndex() default true ;
 }

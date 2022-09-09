@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.small</groupId>
         <artifactId>easy-txt</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </parent>
 
     <artifactId>easy-txt-core</artifactId>
-    <version>${easytxt.version}</version>
+
     <name>easy-txt-core</name>
     <description>easy txt for options</description>
     <packaging>jar</packaging>

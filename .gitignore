@@ -1,2 +1,6 @@
 easy-txt-core/target
 easy-txt-test/target
+
+*.iml
+easy-txt-core/*.iml
+easy-txt-test/*.iml

@@ -2,6 +2,7 @@ package com.small.easytxt.test.listener;
 
 import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.metadata.AbstractReadListener;
+import com.small.easytxt.test.bean.BeanTest;
 
 import java.io.File;
 
@@ -12,14 +13,14 @@ import java.io.File;
  * @date: 2022/9/9 10:42
  * @version: v1.0
  */
-public class DemoReadListener extends AbstractReadListener {
+public class BeanReadListener extends AbstractReadListener<BeanTest> {
 
-    public DemoReadListener() {
+    public BeanReadListener() {
 
     }
 
     @Override
-    public void lineInvoke(Integer rowNo, Object data) {
+    public void lineInvoke(Integer rowNo, BeanTest data) {
         String ot = StrUtil.format(" rowNo: {} data : {} ", new Object[]{rowNo, data});
         System.out.println(ot);
     }

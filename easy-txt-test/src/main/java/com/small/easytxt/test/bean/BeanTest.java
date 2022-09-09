@@ -13,15 +13,15 @@ import lombok.Data;
 @Data
 public class BeanTest {
 
-    @TxtFiled( index = 1 )
+    @TxtFiled( index = 0 )
     private String line1;
 
-    @TxtFiled( index = 2 )
+    @TxtFiled( index = 1 )
     private String line2;
 
-    @TxtFiled( index = 30 )
+    @TxtFiled( index = 2 )
     private String line3;
 
-    @TxtFiled( index = 4 )
+    @TxtFiled( index = 3 )
     private String line4;
 }

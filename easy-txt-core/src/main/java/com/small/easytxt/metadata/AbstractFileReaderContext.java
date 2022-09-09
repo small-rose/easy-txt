@@ -52,7 +52,7 @@ public abstract class AbstractFileReaderContext extends FileReaderContext {
 
     @Override
     public Object getBean() {
-        return objectInstance;
+        return object;
     }
 
     @Override

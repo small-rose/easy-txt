@@ -1,7 +1,7 @@
 package com.small.easytxt.metadata;
 
 import cn.hutool.core.lang.Assert;
-import com.small.easytxt.listener.ReadListener;
+import com.small.easytxt.write.listener.WriteListener;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -11,18 +11,15 @@ import java.util.Map;
 /**
  * @Project : easy-txt
  * @Author : zhangzongyuan
- * @Description : [ AbstractFileReaderContext ] 说明：无
+ * @Description : [ AbstractFileReader ] 说明：无
  * @Function :  功能说明：无
- * @Date ：2022/9/8 16:55
+ * @Date ：2022/9/9 14:18
  * @Version ： 1.0
  **/
-public abstract class AbstractFileReaderContext extends FileReaderContext {
-
+public abstract class AbstractFileWriter extends FileWriterContext{
 
     @Override
     public void file(File file) {
-        Assert.isTrue(file!=null, "文件不允许为空");
-        Assert.isTrue(file.exists(), "找不到文件 ".concat(file.getAbsolutePath()));
         this.file = file;
     }
 
@@ -56,8 +53,8 @@ public abstract class AbstractFileReaderContext extends FileReaderContext {
     }
 
     @Override
-    public List<ReadListener> getReadListenerList() {
-        return readListenerList;
+    public List<WriteListener> getWriteListenerList() {
+        return writeListenerList;
     }
 
     @Override

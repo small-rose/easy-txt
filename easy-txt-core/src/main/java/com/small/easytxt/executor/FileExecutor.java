@@ -10,7 +10,7 @@ import java.io.IOException;
  * @Date ：2022/9/8 11:03
  * @Version ： 1.0
  **/
-public interface FileReadExecutor {
+public interface FileExecutor {
 
     void execute()  throws IOException;
 }

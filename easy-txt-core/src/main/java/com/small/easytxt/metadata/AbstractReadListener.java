@@ -1,6 +1,6 @@
 package com.small.easytxt.metadata;
 
-import com.small.easytxt.listener.ReadListener;
+import com.small.easytxt.read.listener.ReadListener;
 
 /**
  * @Project : easy-txt

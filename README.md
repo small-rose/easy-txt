@@ -10,7 +10,9 @@ easy-txt
 
 - 文件导出导出
 
-## 开始
+# 开始
+
+## 读文件
 
 ### 默认读取行
 
@@ -30,7 +32,9 @@ public class DemoReadListener extends AbstractReadListener {
     }
 }
 ```
-读取文件：
+
+普通的按行读取文件：
+
 ```java
 public class ReadDemoTest {
     @Test
@@ -81,7 +85,7 @@ public class BeanReadDemoTest {
     
     @Test
     public void test_page_bean() throws IOException {
-        //每次读取条件
+        //按批条数处理
         Integer pageSize = 2;
         File file = new File("d:\\2.txt");
         //Bean 属性多少于或等于数据列
@@ -95,7 +99,11 @@ public class BeanReadDemoTest {
 
 ## 自动升序模式
 
-固定索引模式：是指使用  `@TxtFiled` 对应的Bean属性时，不指明txt文本行分割后的取值索引，而是根据设置的索引大小自动升升序赋值。
+自动升序模式:
+
+- 是指使用  `@TxtFiled` 对应的Bean属性时，不指明txt文本行分割后的取值索引，而是根据设置的索引大小自动升升序赋值。
+- 使用该模式时必须使用类注解 `@TxtPorperty(fixIndex = false)` 来注解bean，且必须 `fixIndex = false ` 方可生效，
+- 一般不建议固定索引模式够用。
 
 ```java
 
@@ -124,7 +132,7 @@ public class BeanTestVO {
 }
 ```
 
-调用
+分批处理文件
 
 ```java
 public class BeanReadDemoTest {
@@ -137,6 +145,44 @@ public class BeanReadDemoTest {
             pagelist.stream().forEach(System.out::println);
             System.out.println(pagelist.size());
         }).doRead();
+    }
+}
+```
+
+## 写文件
+
+应用场景:
+
+- 如果数据量很大，一次性查出数据加载到内存比较麻烦,可以分页/分批写入文件。
+
+实例：
+
+```java
+public class BeanWriteDemoTest {
+
+
+    @Test
+    public void test_bean_write(){
+
+        File file = new File("d:\\3.txt");
+        if (file.exists()){ file.delete();}
+        int maxPageNo =4;
+        for (int i = 1; i <= maxPageNo ; i++) {
+            EasyTxt.write(file, BeanTest.class, ",",i, 10, (pageNum, pageSize) -> {
+                //模拟分页数据分批写入文件
+                List<BeanTest> list = new ArrayList<>();
+                for (int x=0; x <10 ; x++){
+                    BeanTest bean = new BeanTest();
+                    bean.setLine1("A-"+pageNum+x);
+                    bean.setLine2("X01-"+pageNum+x);
+                    bean.setLine3("测试-"+pageNum+x);
+                    bean.setLine4("100-"+pageNum+x);
+                    list.add(bean);
+                }
+                return list ;
+            }).doWrite();
+        }
+
     }
 }
 ```

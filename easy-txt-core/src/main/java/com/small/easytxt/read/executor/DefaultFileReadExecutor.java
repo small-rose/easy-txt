@@ -1,9 +1,10 @@
-package com.small.easytxt.executor;
+package com.small.easytxt.read.executor;
 
 import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.annotation.TxtFiled;
 import com.small.easytxt.annotation.TxtPorperty;
-import com.small.easytxt.listener.ReadListener;
+import com.small.easytxt.executor.FileExecutor;
+import com.small.easytxt.read.listener.ReadListener;
 import com.small.easytxt.metadata.FileReaderContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
@@ -25,7 +26,7 @@ import java.util.Set;
  * @Version ： 1.0
  **/
 
-public class DefaultFileReadExecutor implements FileReadExecutor{
+public class DefaultFileReadExecutor implements FileExecutor {
 
     FileReaderContext fileReaderContext;
 

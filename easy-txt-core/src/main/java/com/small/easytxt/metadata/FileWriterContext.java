@@ -1,6 +1,6 @@
 package com.small.easytxt.metadata;
 
-import com.small.easytxt.read.listener.ReadListener;
+import com.small.easytxt.write.listener.WriteListener;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -16,21 +16,22 @@ import java.util.Map;
  * @Date ：2022/9/5 15:46
  * @Version ： 1.0
  **/
-public abstract class FileReaderContext {
+public abstract class FileWriterContext {
 
     protected File file  ;
     protected String splitor ;
     protected Class object ;
     protected Object objectInstance ;
     protected boolean isToBean ;
-    protected List<ReadListener> readListenerList ;
+    protected List<WriteListener> writeListenerList ;
     protected Map<Integer, Field> beanFieldMap ;
-    FileReaderContext(){
-        this.readListenerList = new ArrayList<>();
+
+    FileWriterContext(){
+        this.writeListenerList = new ArrayList<>();
     }
 
-    public void registerReadListener(ReadListener readListener) {
-        readListenerList.add(readListener);
+    public void registerWriteListener(WriteListener readListener) {
+        writeListenerList.add(readListener);
     }
 
     public abstract void file(File file);
@@ -45,7 +46,7 @@ public abstract class FileReaderContext {
 
     public abstract Object getBean();
 
-    public abstract List<ReadListener> getReadListenerList();
+    public abstract List<WriteListener> getWriteListenerList();
 
     public abstract Map<Integer, Field> getBeanFieldMap();
 

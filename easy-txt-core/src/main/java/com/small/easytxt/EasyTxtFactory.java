@@ -1,8 +1,10 @@
 package com.small.easytxt;
 
 
-import com.small.easytxt.listener.PageReadConsumerListener;
-import com.small.easytxt.listener.ReadListener;
+import com.small.easytxt.function.QueryPageList;
+import com.small.easytxt.read.listener.PageReadConsumerListener;
+import com.small.easytxt.read.listener.ReadListener;
+import com.small.easytxt.write.listener.PageWriteSupplierListener;
 
 import java.io.File;
 import java.util.List;
@@ -18,9 +20,6 @@ import java.util.function.Consumer;
  **/
 public class EasyTxtFactory {
 
-    public static TxtFileReader read(File file) {
-        return read(file, null, null, null);
-    }
 
     public static TxtFileReader read(File file, ReadListener readListener) {
         return read(file, null, null,readListener);
@@ -56,5 +55,25 @@ public class EasyTxtFactory {
             txtFileReader.registerReadListener(new PageReadConsumerListener(pageSize, consumer));
         }
         return txtFileReader;
+    }
+
+    public static <T> TxtFileWriter write(File file, Class<T> bean, String splitor, QueryPageList<List<T>> query) {
+        return write(file, bean, splitor, 1, 10, query);
+    }
+
+
+    public static <T> TxtFileWriter write(File file, Class<T> bean, String splitor,int pageNo, int pageSize, QueryPageList<List<T>> query) {
+        TxtFileWriter txtFileWriter = new TxtFileWriter();
+        txtFileWriter.file(file);
+        if (bean != null) {
+            txtFileWriter.bean(bean);
+        }
+        if (splitor != null) {
+            txtFileWriter.split(splitor);
+        }
+        if (query != null) {
+            txtFileWriter.registerWriteListener(new PageWriteSupplierListener(pageNo, pageSize ,query));
+        }
+        return txtFileWriter;
     }
 }

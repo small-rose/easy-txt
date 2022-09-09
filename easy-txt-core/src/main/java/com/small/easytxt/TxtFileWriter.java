@@ -3,10 +3,9 @@ package com.small.easytxt;
 import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.annotation.TxtFiled;
 import com.small.easytxt.exception.FiledIndexException;
-import com.small.easytxt.metadata.AbstractFileReader;
-import com.small.easytxt.read.executor.DefaultFileReadExecutor;
+import com.small.easytxt.metadata.AbstractFileWriter;
+import com.small.easytxt.write.executor.DefaultFileWriteExecutor;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.TreeMap;
 
@@ -18,26 +17,26 @@ import java.util.TreeMap;
  * @Date ：2022/9/5 10:56
  * @Version ： 1.0
  **/
-public class TxtFileReader extends AbstractFileReader {
+public class TxtFileWriter extends AbstractFileWriter {
 
-    private DefaultFileReadExecutor  fileReadExecutor ;
+    private DefaultFileWriteExecutor  fileWriteExecutor ;
 
 
 
-    public void doRead() throws IOException {
+    public void doWrite()  {
         initCompenent();
 
         if (object!=null && object instanceof Class && StrUtil.isNotBlank(splitor)){
             this.isToBean = true ;
-            initBean((Class) object);
+            initBean(object);
         }
 
-        fileReadExecutor.execute() ;
+        fileWriteExecutor.execute() ;
 
     }
 
     private void initCompenent() {
-        fileReadExecutor = new DefaultFileReadExecutor(this);
+        fileWriteExecutor = new DefaultFileWriteExecutor(this);
      }
 
     private void initBean(Class object) {
@@ -53,7 +52,7 @@ public class TxtFileReader extends AbstractFileReader {
                 }
                 beanFieldMap.put(annotation.index(), field);
             }
-            //System.out.println(beanFieldMap);
+            System.out.println(beanFieldMap);
 
         } catch (InstantiationException e) {
             e.printStackTrace();

@@ -1,0 +1,27 @@
+package com.small.easytxt.test.bean;
+
+import com.small.easytxt.annotation.TxtFiled;
+import lombok.Data;
+
+/**
+ * @description: TODO 功能角色说明：
+ * TODO 描述：
+ * @author: 张小菜
+ * @date: 2022/9/9 10:42
+ * @version: v1.0
+ */
+@Data
+public class BeanTestIndex {
+
+    @TxtFiled( index = 0 )
+    private String line1;
+
+    @TxtFiled( index = 1 )
+    private String line2;
+
+    @TxtFiled( index = 1 )
+    private String line3;
+
+    @TxtFiled( index = 3 )
+    private String line4;
+}

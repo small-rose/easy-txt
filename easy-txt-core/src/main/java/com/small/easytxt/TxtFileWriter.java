@@ -2,6 +2,7 @@ package com.small.easytxt;
 
 import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.annotation.TxtFiled;
+import com.small.easytxt.converter.ConverterHelper;
 import com.small.easytxt.exception.FiledIndexException;
 import com.small.easytxt.metadata.AbstractFileWriter;
 import com.small.easytxt.write.executor.DefaultFileWriteExecutor;
@@ -30,7 +31,7 @@ public class TxtFileWriter extends AbstractFileWriter {
             this.isToBean = true ;
             initBean(object);
         }
-
+        ConverterHelper.initConverters(beanFieldMap);
         fileWriteExecutor.execute() ;
 
     }

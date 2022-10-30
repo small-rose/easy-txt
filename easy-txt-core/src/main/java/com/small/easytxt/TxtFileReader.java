@@ -2,6 +2,7 @@ package com.small.easytxt;
 
 import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.annotation.TxtFiled;
+import com.small.easytxt.converter.ConverterHelper;
 import com.small.easytxt.exception.FiledIndexException;
 import com.small.easytxt.metadata.AbstractFileReader;
 import com.small.easytxt.read.executor.DefaultFileReadExecutor;
@@ -31,7 +32,7 @@ public class TxtFileReader extends AbstractFileReader {
             this.isToBean = true ;
             initBean((Class) object);
         }
-
+        ConverterHelper.initConverters(beanFieldMap);
         fileReadExecutor.execute() ;
 
     }
@@ -54,7 +55,6 @@ public class TxtFileReader extends AbstractFileReader {
                 beanFieldMap.put(annotation.index(), field);
             }
             //System.out.println(beanFieldMap);
-
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -62,10 +62,6 @@ public class TxtFileReader extends AbstractFileReader {
         }
 
     }
-
-
-
-
 
 
 

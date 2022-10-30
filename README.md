@@ -1,8 +1,25 @@
-# easy-txt
-easy-txt
 
+![easy-txt](logo.jpg)
+
+[![](https://img.shields.io/badge/blog-@small.rose-ff69b4.svg)](https://zhangxiaocai.cn)
+![](https://img.shields.io/badge/java-@>=1.8-blueviolet.svg)
+![](https://img.shields.io/badge/hutool-@5.3.8-green.svg)
+![](https://img.shields.io/badge/commons.io-@2.11.0-critical.svg)
+![](https://img.shields.io/badge/lombok-@1.18.24-blue.svg)
+
+------------------------
+## easy-txt  Information
+ 
 ## easy-txt 是什么
-类似 easyexecel 读取txt的行自动转成Bean
+
+类似 easyexecel 功能，只不过处理的不是excel，而是文本行式的文件，这里txt只是代表其中之一。
+
+只要是按行写的文件，有规律的使用分隔符的文件，均可以处理，并不是必须txt文件，支持大文件分批读取，分批写入。
+
+
+- 1、读取txt的行自动转成Bean。
+- 2、将数据库查询的bean写入相应的行文件。
+
 
 ## 使用场景
 
@@ -53,7 +70,7 @@ public class ReadDemoTest {
 - 固定索引模式。
 - 升序索引模式。
 
-固定索引模式：是指使用  `@TxtFiled` 对应的Bean属性，并指明txt文本行分割后的取值索引即，从0开始。默认会使用该种模式读取。
+固定索引模式：是指使用  `@TxtFiled` 对应的Bean属性，并指明txt文本行分割后的取值索引即，从0开始。默认会使用该种模式读取。因为这种模式下，索引必须要自然升序写，且索引值不得大于映射数目。
 
 ```java
 @Data
@@ -186,3 +203,10 @@ public class BeanWriteDemoTest {
     }
 }
 ```
+
+
+更多Demo参考 easy-txt-test 的测试用例
+
+## Update Log
+
+* [Update Log](/change_log.md)

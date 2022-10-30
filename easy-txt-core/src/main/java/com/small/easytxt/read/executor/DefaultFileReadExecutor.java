@@ -3,9 +3,15 @@ package com.small.easytxt.read.executor;
 import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.annotation.TxtFiled;
 import com.small.easytxt.annotation.TxtPorperty;
+import com.small.easytxt.annotation.format.DateFormatFiled;
+import com.small.easytxt.annotation.format.NumberFormatFiled;
+import com.small.easytxt.converter.ConvertData;
+import com.small.easytxt.converter.factory.ConverterFactory;
+import com.small.easytxt.converter.strategy.Converter;
 import com.small.easytxt.executor.FileExecutor;
-import com.small.easytxt.read.listener.ReadListener;
 import com.small.easytxt.metadata.FileReaderContext;
+import com.small.easytxt.read.listener.ReadListener;
+import com.small.easytxt.utils.StringUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 
@@ -34,12 +40,13 @@ public class DefaultFileReadExecutor implements FileExecutor {
         this.fileReaderContext = fileReaderContext ;
     }
     @Override
-    public void execute()  throws IOException {
+    public void execute() { // throws IOException {
         File file = fileReaderContext.getFile();
         String splitor = fileReaderContext.getSplitor();
         List<ReadListener> readListenerList = fileReaderContext.getReadListenerList();
-        LineIterator it = FileUtils.lineIterator(file, "UTF-8");
+        LineIterator it = null ;
         try {
+            it = FileUtils.lineIterator(file, "UTF-8");
             int lineNo = 1 ;
             while (it.hasNext()) {
 
@@ -55,8 +62,16 @@ public class DefaultFileReadExecutor implements FileExecutor {
                     }
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
-            it.close();
+            if (it != null ) {
+                try {
+                    it.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             for (ReadListener listener : readListenerList){
                 listener.fileEnd(file);
             }
@@ -97,13 +112,34 @@ public class DefaultFileReadExecutor implements FileExecutor {
                     columnVal = data[index++];
                 }
 
-                Object realData = convertType(type, columnVal);
+                //Object realData = convertType(type, columnVal);
+
+                Converter converter = ConverterFactory.getConverterByType(type);
+                ConvertData convertData = getConvertData(field);
+                convertData.setSource(columnVal);
+                Object realData = converter.convertToJavaData(convertData);
                 field.set(object, realData);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         return object;
+    }
+
+
+    private ConvertData getConvertData(Field  field){
+        ConvertData convertData = new ConvertData();
+        DateFormatFiled dateFormatFiled = field.getAnnotation(DateFormatFiled.class);
+        NumberFormatFiled numberFormatFiled = field.getAnnotation(NumberFormatFiled.class);
+        if (dateFormatFiled !=null && StringUtils.isNotBlank(dateFormatFiled.value())) {
+            convertData.setDateFormat(dateFormatFiled.value());
+        }
+        /*
+        if (numberFormatFiled!=null && StringUtils.isNotBlank(numberFormatFiled.value()) ){
+            convertData.setNumberFormat(numberFormatFiled.value());
+        }
+         */
+        return  convertData;
     }
 
     private Object convertType(Class<?> type, String data) {

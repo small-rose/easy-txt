@@ -1,5 +1,5 @@
 
-![easy-txt](logo.jpg)
+![easy-txt](https://github.com/small-rose/easy-txt/blob/develop/logo.jpg)
 
 [![](https://img.shields.io/badge/blog-@small.rose-ff69b4.svg)](https://zhangxiaocai.cn)
 ![](https://img.shields.io/badge/java-@>=1.8-blueviolet.svg)

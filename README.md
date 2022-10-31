@@ -1,10 +1,11 @@
 
 <div align="center">
 
-![easy-txt](https://github.com/small-rose/easy-txt/blob/develop/logo.jpg)
+![](https://github.com/small-rose/easy-txt/blob/develop/logo.jpg)
 
 [![](https://img.shields.io/badge/blog-@small.rose-ff69b4.svg)](https://zhangxiaocai.cn)
 ![](https://img.shields.io/badge/java-@>=1.8-blueviolet.svg)
+![](https://img.shields.io/badge/maven-@1.18.24-yellow.svg)
 ![](https://img.shields.io/badge/hutool-@5.3.8-green.svg)
 ![](https://img.shields.io/badge/commons.io-@2.11.0-critical.svg)
 ![](https://img.shields.io/badge/lombok-@1.18.24-blue.svg)
@@ -29,9 +30,13 @@
 
 有些场景使用文本文件进行业务数据交互时可以使用该工具
 
-- 文件导出导出
+- 批处理文件导入导出
+
 
 # 开始
+
+使用基本上与easyexcel一致。
+编写映射的VO类，然后编写对应的监听，然后调用基本API就可以。
 
 ## 读文件
 
@@ -76,44 +81,69 @@ public class ReadDemoTest {
 
 固定索引模式：是指使用  `@TxtFiled` 对应的Bean属性，并指明txt文本行分割后的取值索引即，从0开始。默认会使用该种模式读取。因为这种模式下，索引必须要自然升序写，且索引值不得大于映射数目。
 
+
+编写映射行数据的Bean/VO类:
+
 ```java
 @Data
-public class BeanTest {
+public class BeanTypeTest {
 
     @TxtFiled( index = 0 )
-    private String line1;
+    private String name;
 
     @TxtFiled( index = 1 )
-    private String line2;
+    private int age;
 
     @TxtFiled( index = 2 )
-    private String line3;
+    private BigDecimal money;
 
     @TxtFiled( index = 3 )
-    private String line4;
+    private Long accNo;
+
+    @TxtFiled( index = 4 )
+    @NumberFormatFiled(value = "## #.##")
+    private Double height;
+
+    @TxtFiled( index = 5 )
+    @DateFormatFiled(value = "yyyy-MM-dd")
+    private Date birth;
 }
 ```
 
 
+编写对应的监听处理数据的Bean/VO类:
 
 ```java
-public class BeanReadDemoTest {
-    @Test
-    public void test_simple_bean() throws IOException {
-        File file = new File("d:\\2.txt");
-        EasyTxt.read(file, BeanTest.class, ",", new BeanReadListener()).doRead();
+public class BeanTypeReadListener extends AbstractReadListener<BeanTypeTest> {
+
+    public BeanTypeReadListener() {
+
     }
-    
+
+    @Override
+    public void lineInvoke(Integer rowNo, BeanTypeTest data) {
+        String ot = StrUtil.format(" rowNo: {} data : {} ", new Object[]{rowNo, data});
+        System.out.println(ot);
+    }
+
+    @Override
+    public void fileEnd(File file) {
+        System.out.println("File read over : " + file.getAbsolutePath());
+    }
+
+}
+```
+
+如果不想自己造文件，可以先看后面写文件部分，使用 **easy-txt** 生成测试文件
+
+```java
+public class BeanTypeDemoTest {
+
     @Test
-    public void test_page_bean() throws IOException {
-        //按批条数处理
-        Integer pageSize = 2;
-        File file = new File("d:\\2.txt");
-        //Bean 属性多少于或等于数据列
-        EasyTxt.read(file, BeanTest.class, "\\|", pageSize, (pagelist) -> {
-            pagelist.stream().forEach(System.out::println);
-            System.out.println(pagelist.size());
-        }).doRead();
+    public void test_47() throws IOException {
+        //解析测试文件
+        File file = new File("d:\\1_typetest_bean_write.txt");
+        EasyTxt.read(file, BeanTypeTest.class, ",", new BeanTypeReadListener()).doRead();
     }
 }
 ```
@@ -124,7 +154,7 @@ public class BeanReadDemoTest {
 
 - 是指使用  `@TxtFiled` 对应的Bean属性时，不指明txt文本行分割后的取值索引，而是根据设置的索引大小自动升升序赋值。
 - 使用该模式时必须使用类注解 `@TxtPorperty(fixIndex = false)` 来注解bean，且必须 `fixIndex = false ` 方可生效，
-- 一般不建议固定索引模式够用。
+- 一般不建议固定索引模式，自动升序模式已够用。
 
 ```java
 
@@ -170,6 +200,10 @@ public class BeanReadDemoTest {
 }
 ```
 
+分批处理的默认监听类是：**PageReadConsumerListener**
+
+
+
 ## 写文件
 
 应用场景:
@@ -177,6 +211,10 @@ public class BeanReadDemoTest {
 - 如果数据量很大，一次性查出数据加载到内存比较麻烦,可以分页/分批写入文件。
 
 实例：
+
+默认的分页监听处理类是 **PageWriteSupplierListener**
+
+如果想要自己实现，可以使用内置函数式接口：**QueryPageList** 。
 
 ```java
 public class BeanWriteDemoTest {

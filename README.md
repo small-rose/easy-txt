@@ -248,7 +248,7 @@ public class BeanWriteDemoTest {
 
 ## 大文件读写
 
-大文件值超过2G的文件读写。
+大文件一般是指超过2G的文件读写。
 
 2022年11月1日测试
 

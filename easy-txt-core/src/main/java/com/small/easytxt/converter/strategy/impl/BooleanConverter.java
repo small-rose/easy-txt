@@ -25,6 +25,6 @@ public class BooleanConverter implements Converter<Boolean> {
 
     @Override
     public String convertToString(ConvertData value) {
-        return String.valueOf(NumberUtils.parseBoolean((String) value.getSource(), value));
+        return String.valueOf(value.getSource());
     }
 }

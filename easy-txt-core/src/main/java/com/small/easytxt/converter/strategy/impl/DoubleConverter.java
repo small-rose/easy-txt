@@ -32,7 +32,7 @@ public class DoubleConverter implements Converter<Double> {
     @Override
     public String convertToString(ConvertData convertData) {
         try {
-            return String.valueOf(NumberUtils.parseDouble((String) convertData.getSource(), convertData));
+            return String.valueOf(NumberUtils.parseDouble(String.valueOf( convertData.getSource()), convertData));
         } catch (ParseException e) {
             throw new NumberFormatException("Double格式转换异常");
         }

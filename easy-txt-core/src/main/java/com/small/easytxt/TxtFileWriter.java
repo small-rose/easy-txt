@@ -53,7 +53,7 @@ public class TxtFileWriter extends AbstractFileWriter {
                 }
                 beanFieldMap.put(annotation.index(), field);
             }
-            System.out.println(beanFieldMap);
+            //System.out.println(beanFieldMap);
 
         } catch (InstantiationException e) {
             e.printStackTrace();

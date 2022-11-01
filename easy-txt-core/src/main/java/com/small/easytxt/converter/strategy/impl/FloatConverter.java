@@ -33,7 +33,7 @@ public class FloatConverter implements Converter<Float> {
     @Override
     public String convertToString(ConvertData convertData) {
         try {
-            return String.valueOf(NumberUtils.parseFloat((String) convertData.getSource(), convertData));
+            return String.valueOf(NumberUtils.parseFloat(String.valueOf(convertData.getSource()), convertData));
         } catch (ParseException e) {
             throw new NumberFormatException("Byte格式转换异常");
         }

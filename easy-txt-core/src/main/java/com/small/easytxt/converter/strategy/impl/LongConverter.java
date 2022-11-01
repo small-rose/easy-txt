@@ -34,7 +34,7 @@ public class LongConverter implements Converter<Long> {
     public String convertToString(ConvertData convertData) {
 
         try {
-            return String.valueOf(NumberUtils.parseLong((String)convertData.getSource(), convertData));
+            return String.valueOf(NumberUtils.parseLong(String.valueOf(convertData.getSource()), convertData));
         } catch (ParseException e) {
             throw new NumberFormatException("Long 格式转换异常");
         }

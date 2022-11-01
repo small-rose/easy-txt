@@ -73,7 +73,7 @@ public class DefaultFileWriteExecutor implements FileExecutor {
             field.setAccessible(true);
             String columnVal =  null;
             Class<?> type = field.getType();
-            System.out.println(type.getName());
+            //System.out.println(type.getName());
 
             Converter converter = ConverterFactory.getConverterByType(type);
             ConvertData convertData = getConvertData(field);

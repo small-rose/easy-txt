@@ -33,7 +33,7 @@ public class BigDecimalConverter implements Converter<BigDecimal> {
     @Override
     public String convertToString(ConvertData convertData) {
         try {
-            return String.valueOf(NumberUtils.parseBigDecimal((String) convertData.getSource(), convertData));
+            return String.valueOf(NumberUtils.parseBigDecimal(String.valueOf( convertData.getSource()), convertData));
         } catch (ParseException e) {
             e.printStackTrace();
             throw new NumberFormatException("格式转换异常");

@@ -26,7 +26,7 @@ public class PageWriteSupplierListener<T> implements WriteListener<T> {
     }
     @Override
     public List<T> lineInvoke() {
-        System.out.println("来拿List的值");
+        //System.out.println("pageNo = "+ pageNo);
         list = queryPageList.query(pageNo, pageSize);
         return list;
     }

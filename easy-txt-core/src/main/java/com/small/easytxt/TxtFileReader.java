@@ -7,7 +7,6 @@ import com.small.easytxt.exception.FiledIndexException;
 import com.small.easytxt.metadata.AbstractFileReader;
 import com.small.easytxt.read.executor.DefaultFileReadExecutor;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.TreeMap;
 
@@ -25,7 +24,7 @@ public class TxtFileReader extends AbstractFileReader {
 
 
 
-    public void doRead() throws IOException {
+    public void doRead()  {
         initCompenent();
 
         if (object!=null && object instanceof Class && StrUtil.isNotBlank(splitor)){

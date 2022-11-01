@@ -36,7 +36,7 @@ public class BigIntegerConverter implements Converter<BigInteger> {
     public String convertToString(ConvertData convertData) {
 
         try {
-            return String.valueOf(NumberUtils.parseBigInteger((String) convertData.getSource(), convertData));
+            return String.valueOf(NumberUtils.parseBigInteger(String.valueOf(convertData.getSource()), convertData));
         } catch (ParseException e) {
             e.printStackTrace();
             throw new NumberFormatException("格式转换异常");

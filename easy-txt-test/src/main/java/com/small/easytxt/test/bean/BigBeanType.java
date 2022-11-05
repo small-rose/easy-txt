@@ -1,10 +1,14 @@
 package com.small.easytxt.test.bean;
 
 import com.small.easytxt.annotation.TxtFiled;
+import com.small.easytxt.annotation.format.DateFormatFiled;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @description: TODO 功能角色说明：
@@ -53,8 +57,16 @@ public class BigBeanType {
     @TxtFiled( index = 17 )
     private BigDecimal column18 ;
     @TxtFiled( index = 18 )
-    private String column19 ;
+    @DateFormatFiled(value = "yyyy-MM-dd HH:mm:ss")
+    private Date column19 ;
     @TxtFiled( index = 19 )
     private String column20 ;
 
+    @TxtFiled( index = 20 )
+    @DateFormatFiled(value = "yyyy-MM-dd")
+    private LocalDate column21 ;
+
+    @TxtFiled( index = 21 )
+    @DateFormatFiled(value = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime column22 ;
 }

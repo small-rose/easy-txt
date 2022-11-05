@@ -22,7 +22,7 @@ public class ConverterHelper {
     public static void initConverters(Map<Integer, Field> beanFieldMap) {
 
         cacheConverter.put("int", new IntegerConverter());
-        cacheConverter.put("bigInterger", new BigIntegerConverter());
+        cacheConverter.put("bigInteger", new BigIntegerConverter());
         cacheConverter.put("long", new LongConverter());
         cacheConverter.put("byte", new ByteConverter());
         cacheConverter.put("char", new CharConverter());
@@ -32,6 +32,8 @@ public class ConverterHelper {
         cacheConverter.put("boolean", new BooleanConverter());
         cacheConverter.put("BigDecimal", new BigDecimalConverter());
         cacheConverter.put("Date", new DateConverter());
+        cacheConverter.put("LocalDate", new LocalDateConverter());
+        cacheConverter.put("LocalDateTime", new LocalDateTimeConverter());
         cacheConverter.put("String", new StringConverter());
     }
 }

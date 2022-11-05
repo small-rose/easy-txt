@@ -3,6 +3,7 @@ package com.small.easytxt.utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -95,6 +96,25 @@ public class DateUtils {
      * convert string to date
      *
      * @param dateString
+     * @param dateFormat
+     * @param local
+     * @return
+     */
+    public static LocalDate parseLocalDate(String dateString, String dateFormat, Locale local) {
+        if (StringUtils.isEmpty(dateFormat)) {
+            dateFormat = switchDateFormat(dateString);
+        }
+        if (local == null) {
+            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(dateFormat));
+        } else {
+            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(dateFormat, local));
+        }
+    }
+
+    /**
+     * convert string to date
+     *
+     * @param dateString
      * @return
      * @throws ParseException
      */
@@ -161,6 +181,27 @@ public class DateUtils {
             dateFormat = defaultDateFormat;
         }
         return getCacheDateFormat(dateFormat).format(date);
+    }
+
+    /**
+     * Format date
+     *
+     * @param date
+     * @param dateFormat
+     * @return
+     */
+    public static String format(LocalDate date, String dateFormat, Locale local) {
+        if (date == null) {
+            return null;
+        }
+        if (StringUtils.isEmpty(dateFormat)) {
+            dateFormat = defaultDateFormat;
+        }
+        if (local == null) {
+            return date.format(DateTimeFormatter.ofPattern(dateFormat));
+        } else {
+            return date.format(DateTimeFormatter.ofPattern(dateFormat, local));
+        }
     }
 
     /**

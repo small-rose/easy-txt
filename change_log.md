@@ -7,6 +7,7 @@
 - 增加日期格式化注解 `@DateFormatFiled` 功能
 - 增加字符串格式化注解 `@NumberFormatFiled`功能
 - 增加类型转换的测试用例
+- 增加java 8时间、日期格式的转换
 
 # v1.0.0
 

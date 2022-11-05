@@ -13,17 +13,19 @@
 </div>
 
 ------------------------
-## easy-txt  Information
+## easy-txt  Document
+ 
+:page_facing_up: easy-txt Document
  
 ## easy-txt 是什么
 
 类似 easyexecel 功能，只不过处理的不是excel，而是文本行式的文件，这里txt只是代表其中之一。
 
-只要是按行写的文件，有规律的使用分隔符的文件，均可以处理，并不是必须txt文件，支持大文件分批读取，分批写入。
+只要是按行写的文件，有规律的使用分隔符的文件，均可以处理，并不是必须txt后缀格式的文件，支持大文件分批读取，分批写入。
 
 
-- 1、读取txt的行自动转成Bean。
-- 2、将数据库查询的bean写入相应的行文件。
+- :memo: 1、读取txt的行自动转成Bean。
+- :memo: 2、将数据库查询的bean写入相应的行文件。
 
 
 ## 使用场景
@@ -36,7 +38,7 @@
 # 开始
 
 使用基本上与easyexcel一致。
-编写映射的VO类，然后编写对应的监听，然后调用基本API就可以。
+编写映射的VO类，然后编写对应的监听，链式调用API就可以。
 
 ## 读文件
 
@@ -252,7 +254,7 @@ public class BeanWriteDemoTest {
 
 2022年11月1日测试
 
-测试环境：window10,32G,读写目标磁盘为机械硬盘，已使用4年。
+测试环境：window10,16G,读写目标磁盘为机械硬盘，已使用4年。
 
 测试前提：Bean只有String类型，基本不做转换，每行30列数据。
 
@@ -437,7 +439,8 @@ public class BigFileTypeDemoTest {
                     bean.setColumn18(new BigDecimal("18.00"));
                     bean.setColumn19("文件操作完毕后必须关闭，否则长期保持对文件的连接状态，造成内存溢出的现象发生");
                     bean.setColumn20("文件操作完毕后必须关闭，否则长期保持对文件的连接状态，造成内存溢出的现象发生");
-
+                    bean.setColumn21(LocalDate.now());
+                    bean.setColumn22(LocalDateTime.now());
                     list.add(bean);
                 }
                 return list ;
@@ -475,8 +478,12 @@ public class BigFileTypeDemoTest {
 }
 ```
 
+
+:wi
 更多Demo参考 easy-txt-test 的测试用例
 
 ## Update Log
+
+:memo: 更新日志
 
 * [Update Log](/change_log.md)

@@ -437,7 +437,8 @@ public class BigFileTypeDemoTest {
                     bean.setColumn18(new BigDecimal("18.00"));
                     bean.setColumn19("文件操作完毕后必须关闭，否则长期保持对文件的连接状态，造成内存溢出的现象发生");
                     bean.setColumn20("文件操作完毕后必须关闭，否则长期保持对文件的连接状态，造成内存溢出的现象发生");
-
+                    bean.setColumn21(LocalDate.now());
+                    bean.setColumn22(LocalDateTime.now());
                     list.add(bean);
                 }
                 return list ;

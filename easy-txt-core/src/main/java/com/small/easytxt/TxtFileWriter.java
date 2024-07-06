@@ -54,11 +54,12 @@ public class TxtFileWriter extends AbstractFileWriter {
                 beanFieldMap.put(annotation.index(), field);
             }
             //System.out.println(beanFieldMap);
-
-        } catch (InstantiationException e) {
+            if(beanFieldMap.size()<=0 ){
+                throw new FiledIndexException("Not found bean field index for annotation  TxtFiled ");
+            }
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new FiledIndexException("Init bean field index error ", e);
         }
 
     }

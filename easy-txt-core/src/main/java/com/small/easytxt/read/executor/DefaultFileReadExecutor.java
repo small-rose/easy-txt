@@ -8,6 +8,7 @@ import com.small.easytxt.annotation.format.NumberFormatFiled;
 import com.small.easytxt.converter.ConvertData;
 import com.small.easytxt.converter.factory.ConverterFactory;
 import com.small.easytxt.converter.strategy.Converter;
+import com.small.easytxt.exception.BeanConvertException;
 import com.small.easytxt.executor.FileExecutor;
 import com.small.easytxt.metadata.FileReaderContext;
 import com.small.easytxt.read.listener.ReadListener;
@@ -122,6 +123,7 @@ public class DefaultFileReadExecutor implements FileExecutor {
             }
         }catch (Exception e){
             e.printStackTrace();
+            throw new BeanConvertException("Line to bean exception ", e);
         }
         return object;
     }

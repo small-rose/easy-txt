@@ -7,6 +7,7 @@ import com.small.easytxt.annotation.format.NumberFormatFiled;
 import com.small.easytxt.converter.ConvertData;
 import com.small.easytxt.converter.factory.ConverterFactory;
 import com.small.easytxt.converter.strategy.Converter;
+import com.small.easytxt.exception.BeanConvertException;
 import com.small.easytxt.executor.FileExecutor;
 import com.small.easytxt.metadata.FileWriterContext;
 import com.small.easytxt.utils.StringUtils;
@@ -67,7 +68,7 @@ public class DefaultFileWriteExecutor implements FileExecutor {
         Map<Integer, Field> beanFieldMap = fileWriterContext.getBeanFieldMap();
         Set<Integer> integers = beanFieldMap.keySet();
 
-        String line = "" ;
+        StringBuffer line = new StringBuffer("") ;
         for (Integer integer : integers) {
             Field field = beanFieldMap.get(integer);
             field.setAccessible(true);
@@ -83,13 +84,13 @@ public class DefaultFileWriteExecutor implements FileExecutor {
                 columnVal = converter.convertToString(convertData);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+                throw new BeanConvertException("Bean to line exception ", e);
             }
 
             //columnVal = (String) field.get(o);
-            line = line.concat(columnVal).concat(splitor);
+            line = line.append(columnVal).append(splitor);
         }
-        line = line.substring(0, line.length()-1);
-        return line;
+        return line.toString().substring(0, line.length()-1);
     }
 
     private ConvertData getConvertData(Field  field){

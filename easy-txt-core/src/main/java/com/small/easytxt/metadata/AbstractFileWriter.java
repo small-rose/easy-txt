@@ -1,6 +1,8 @@
 package com.small.easytxt.metadata;
 
 import cn.hutool.core.lang.Assert;
+import com.small.easytxt.annotation.TxtFiled;
+import com.small.easytxt.exception.FiledIndexException;
 import com.small.easytxt.write.listener.TxtSupplierListener;
 import com.small.easytxt.write.listener.TxtWriteListener;
 import org.springframework.jdbc.core.JdbcTemplate;

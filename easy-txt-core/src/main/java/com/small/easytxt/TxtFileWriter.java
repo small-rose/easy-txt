@@ -1,10 +1,10 @@
 package com.small.easytxt;
 
-import cn.hutool.core.util.StrUtil;
 import com.small.easytxt.annotation.TxtFiled;
 import com.small.easytxt.converter.ConverterHelper;
 import com.small.easytxt.exception.FiledIndexException;
 import com.small.easytxt.metadata.AbstractFileWriter;
+import com.small.easytxt.utils.StringUtils;
 import com.small.easytxt.write.executor.DefaultFileWriteExecutor;
 
 import java.lang.reflect.Field;
@@ -27,11 +27,11 @@ public class TxtFileWriter extends AbstractFileWriter {
     public void doWrite()  {
         initCompenent();
 
-        if (object!=null && object instanceof Class && StrUtil.isNotBlank(splitor)){
+        if (object!=null && object instanceof Class && StringUtils.isNotBlank(splitor)){
             this.isToBean = true ;
             initBean(object);
         }
-        ConverterHelper.initConverters(beanFieldMap);
+        //ConverterHelper.initConverters(beanFieldMap);
         fileWriteExecutor.execute() ;
 
     }
@@ -40,7 +40,7 @@ public class TxtFileWriter extends AbstractFileWriter {
         fileWriteExecutor = new DefaultFileWriteExecutor(this);
      }
 
-    private void initBean(Class object) {
+    protected void initBean(Class object) {
         try {
 
             objectInstance = object.newInstance();

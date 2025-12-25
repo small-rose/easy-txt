@@ -15,8 +15,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.24</lombok.version>
         <easytxt.version>1.1.0</easytxt.version>
-        <hutool-core.version>5.3.8</hutool-core.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <hutool-core.version>5.8.42</hutool-core.version>
+        <commons-io.version>2.21.0</commons-io.version>
+        <slf4j-api.version>1.7.36</slf4j-api.version>
+        <springboot.version>2.5.12</springboot.version>
+        <commons-beanutils.version>1.11.0</commons-beanutils.version>
     </properties>
     <dependencies>
         <dependency>

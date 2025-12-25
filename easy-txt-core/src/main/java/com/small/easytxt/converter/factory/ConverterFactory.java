@@ -4,6 +4,7 @@ import com.small.easytxt.converter.strategy.Converter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @description: TODO 功能角色说明：
@@ -14,7 +15,7 @@ import java.util.Map;
  */
 public class ConverterFactory {
 
-    private static Map<Class<?>, Converter<?>> converterMap = new HashMap<>();
+    private static Map<Class<?>, Converter<?>> converterMap = new ConcurrentHashMap<>();
 
 
     public static Converter<?> getConverterByType(Class<?> typeName){

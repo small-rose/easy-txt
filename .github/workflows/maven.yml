@@ -32,4 +32,7 @@ jobs:
             See [Change Log](change_log.md) for details.
           files: |
             easy-txt-core/target/*.jar
+          draft: false
+          prerelease: false
+          make_latest: true
           generate_release_notes: true

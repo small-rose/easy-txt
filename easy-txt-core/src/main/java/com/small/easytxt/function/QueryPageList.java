@@ -2,7 +2,7 @@ package com.small.easytxt.function;
 
 /**
  * @Project : easy-txt
- * @Author : zhangzongyuan
+ * @Author : small-rose
  * @Description : [ QueryPageList ] 说明：无
  * @Function :  功能说明：无
  * @Date ：2022/9/9 16:19

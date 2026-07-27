@@ -25,7 +25,7 @@ import java.util.Set;
 
 /**
  * @Project : easy-txt
- * @Author : zhangzongyuan
+ * @Author : small-rose
  * @Description : [ DefaultFileReadExecutor ] 说明：无
  * @Function :  功能说明：无
  * @Date ：2022/9/8 11:14

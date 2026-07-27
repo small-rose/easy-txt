@@ -7,8 +7,22 @@
     <artifactId>easy-txt</artifactId>
     <version>1.1.0</version>
     <name>easy-txt</name>
-    <url>http://docs.zhangxiaocai</url>
-    <description>Easy txt for options </description>
+    <url>https://github.com/sm-rose/easy-txt</url>
+    <description>A Java library for reading and writing delimited text files (CSV, TSV, pipe, etc.) with annotation-based Bean mapping and large file support. Inspired by EasyExcel.</description>
+
+    <developers>
+        <developer>
+            <id>small-rose</id>
+            <name>small-rose</name>
+            <email>small-rose@qq.com</email>
+            <url>https://zhangxiaocai.cn</url>
+            <roles>
+                <role>Owner</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>Asia/Shanghai</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>1.8</java.version>

@@ -2,7 +2,7 @@ package com.small.easytxt.exception;
 
 /**
  * @Project : easy-txt
- * @Author : zhangzongyuan
+ * @Author : small-rose
  * @Description : [ FiledIndexException ] 说明：无
  * @Function :  功能说明：无
  * @Date ：2022/9/9 11:47

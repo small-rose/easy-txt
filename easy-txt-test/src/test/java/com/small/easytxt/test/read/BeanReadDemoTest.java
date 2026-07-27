@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * @Project : easy-txt
- * @Author : zhangzongyuan
+ * @Author : small-rose
  * @Description : [ BeanReadDemoTest ] 说明：无
  * @Function :  功能说明：无
  * @Date ：2022/9/9 12:15

@@ -10,10 +10,17 @@
     <url>https://github.com/sm-rose/easy-txt</url>
     <description>A Java library for reading and writing delimited text files (CSV, TSV, pipe, etc.) with annotation-based Bean mapping and large file support. Inspired by EasyExcel.</description>
 
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
             <id>small-rose</id>
-            <name>small-rose</name>
+            <name>张小菜</name>
             <email>small-rose@qq.com</email>
             <url>https://zhangxiaocai.cn</url>
             <roles>

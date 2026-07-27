@@ -8,10 +8,10 @@
 
 **Read & write delimited text files like EasyExcel. Annotation-based Bean mapping, 2G+ large file support, batch processing.**
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.small/easy-txt?color=brightgreen)](https://search.maven.org/artifact/com.small/easy-txt)
+[![Maven Central](https://img.shields.io/maven-central/v/com.small/easy-txt-core?color=brightgreen)](https://search.maven.org/artifact/com.small/easy-txt-core)
 [![Java CI](https://img.shields.io/github/actions/workflow/status/sm-rose/easy-txt/maven.yml?logo=github&label=build)](https://github.com/sm-rose/easy-txt/actions)
 [![Java](https://img.shields.io/badge/Java-1.8+-blue)](https://java.com)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green)](LICENSE)
+[![License](https://img.shields.io/badge/License-GPL%203.0-blue)](LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/sm-rose/easy-txt)](https://github.com/sm-rose/easy-txt/releases)
 [![GitHub Stars](https://img.shields.io/github/stars/sm-rose/easy-txt?logo=github)](https://github.com/sm-rose/easy-txt)
 [![Blog](https://img.shields.io/badge/blog-@small.rose-ff69b4)](https://zhangxiaocai.cn)
@@ -68,6 +68,16 @@ EasyTxt.write(file, UserBean.class, ",", pageNo, pageSize, this::queryPage).doWr
 ```groovy
 implementation 'com.small:easy-txt-core:1.1.0'
 ```
+
+### Build from Source
+
+```bash
+git clone https://github.com/sm-rose/easy-txt.git
+cd easy-txt
+mvn clean package
+```
+
+The JAR will be generated at `easy-txt-core/target/easy-txt-core-1.1.0.jar`.
 
 ---
 
@@ -143,4 +153,6 @@ See [`BigFileDemoTest`](./easy-txt-test/src/test/java/com/small/easytxt/test/big
 
 - [v1.1.0](./change_log.md#v110) — Type converters, date/number format annotations, Java 8 time support
 - [v1.0.0](./change_log.md#v100) — Initial release: batch read/write, bean mapping
+
+
 

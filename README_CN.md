@@ -8,10 +8,10 @@
 
 **类 EasyExcel 的文本文件处理工具。注解驱动 Bean 映射，支持 CSV/管道符/任意分隔符，2G+ 大文件分批读写。**
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.small/easy-txt?color=brightgreen)](https://search.maven.org/artifact/com.small/easy-txt)
+[![Maven Central](https://img.shields.io/maven-central/v/com.small/easy-txt-core?color=brightgreen)](https://search.maven.org/artifact/com.small/easy-txt-core)
 [![Java CI](https://img.shields.io/github/actions/workflow/status/sm-rose/easy-txt/maven.yml?logo=github&label=build)](https://github.com/sm-rose/easy-txt/actions)
 [![Java](https://img.shields.io/badge/Java-1.8+-blue)](https://java.com)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green)](LICENSE)
+[![License](https://img.shields.io/badge/License-GPL%203.0-blue)](LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/sm-rose/easy-txt)](https://github.com/sm-rose/easy-txt/releases)
 [![GitHub Stars](https://img.shields.io/github/stars/sm-rose/easy-txt?logo=github)](https://github.com/sm-rose/easy-txt)
 [![博客](https://img.shields.io/badge/blog-@small.rose-ff69b4)](https://zhangxiaocai.cn)
@@ -68,6 +68,16 @@ EasyTxt.write(file, UserBean.class, ",", pageNo, pageSize, this::queryPage).doWr
 ```groovy
 implementation 'com.small:easy-txt-core:1.1.0'
 ```
+
+### 源码构建
+
+```bash
+git clone https://github.com/sm-rose/easy-txt.git
+cd easy-txt
+mvn clean package
+```
+
+JAR 包生成在 `easy-txt-core/target/easy-txt-core-1.1.0.jar`。
 
 ---
 
@@ -143,4 +153,6 @@ EasyTxt.write(file, BeanTest.class, ",", pageNo, pageSize, (pNum, pSize) -> {
 
 - [v1.1.0](./change_log.md#v110) — 增加类型转换器、日期/数字格式化注解、Java 8 时间支持
 - [v1.0.0](./change_log.md#v100) — 首个版本：基本分批读写、Bean 映射
+
+
 

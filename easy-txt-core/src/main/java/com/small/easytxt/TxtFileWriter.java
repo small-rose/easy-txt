@@ -31,7 +31,7 @@ public class TxtFileWriter extends AbstractFileWriter {
             this.isToBean = true ;
             initBean(object);
         }
-        //ConverterHelper.initConverters(beanFieldMap);
+        ConverterHelper.initConverters(beanFieldMap);
         fileWriteExecutor.execute() ;
 
     }
